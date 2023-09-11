@@ -1,0 +1,854 @@
+ <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Default Thumbnail">
+<meta name="description"
+ChatApp is an extended version of chatBot.That can talks like human, can answer questions within seconds also have voice recognition system./>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 600 300">
+   
+
+  <!-- Symbol -->
+
+  <symbol id="s-text">
+    <text text-anchor="middle"
+
+            x="50%" y="50%" dy=".35em">
+
+        CHAT APP 
+
+     </text>
+    <text text-anchor="middle"
+
+            x="50%" y="50%" dy=".35em">
+
+       CHAT APP
+
+     </text>
+
+    <text text-anchor="middle"
+
+            x="50%" y="50%" dy=".35em">
+
+       CHAT APP
+
+     </text>
+
+  </symbol>
+
+  <!-- Duplicate symbols -->
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+   <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+  <use xlink:href="#s-text" class="text"
+
+            ></use>
+
+</svg>
+<style>
+  
+
+
+
+/* Main styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.text {
+  fill: none;
+  stroke-width:5;
+  stroke-linejoin: round;
+  stroke-dasharray:70 330;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 9s infinite linear;
+  animation: stroke 9s infinite linear;
+}
+
+.text:nth-child(5n + 1) {
+  stroke: #F2385A;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+.text:nth-child(5n + 2) {
+  stroke: #F5A503;
+  -webkit-animation-delay: -2.4s;
+  animation-delay: -2.4s;
+}
+
+.text:nth-child(5n + 3) {
+  stroke: #E9F1DF;
+  -webkit-animation-delay: -3.6s;
+  animation-delay: -3.6s;
+}
+
+.text:nth-child(5n + 4) {
+  stroke: #56D9CD;
+  -webkit-animation-delay: -4.8s;
+  animation-delay: -4.8s;
+}
+
+.text:nth-child(5n + 5) {
+  stroke: #3AA1BF;
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+/* Other styles */
+
+
+text{
+ 
+  background-size: 5em 100%;
+  font: 5.5em/1 Open Sans, Impact;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom:5px;
+  
+}
+
+
+</style>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+
+ <body>
+
+<div class="main-container">
+
+   <div id="chatbot-container">
+
+   
+
+  </div>
+
+  <form id="form" method="get" accept-charset="utf-8">
+
+   <input type="text" name="botvalue" id="botvalue" placeholder="Say something"/><button type="submit" class="submit fab fa-telegram-plane"></button>
+
+   
+    
+  </form>
+
+  <button id="btn" type="button" onclick="startVoice()" class="fa fa-microphone"> start voice</button>
+
+</div>
+
+  
+
+  
+
+ </body>
+<script>
+
+let container = document.getElementById('chatbot-container');
+
+let btn = document.getElementById('btn');
+
+let form = document.getElementById('form');
+
+
+  let arr1 = [
+  { name: "hello", text: "Hello there! How can I assist you?" },
+  
+
+
+  { name: "hi", text: "Hello there! How can I assist you?" },
+  { name: "greeting", text: "Hello there! How can I assist you?" },
+  { name: "who built you", text: "I am an AI chatbot. I was developed in 2023." },
+  { name: "about you", text: "I am an AI chatbot. I was developed in 2023." },
+  { name: "develop you", text: "I was created and developed in 2023 by Mohammad Al-amin." },
+  { name: "who develop you", text: "I was created and developed in 2023 by Mohammad Al-amin." },
+  { name: "what is sex", text: "Don't ever repeat yourself, thank you!" },
+  { name: "sex", text: "Don't ever repeat yourself, thank you!" },
+  { name: "nudity", text: "Don't ever repeat yourself, thank you!" },
+  { name: "thanks", text: "You're most welcome!" },
+  { name: "thank you", text: "You're most welcome!" },
+  { name: "birthday", text: "You're most welcome!" },
+  { name: "happy birthday", text: "You're most welcome!" },
+  { name: "machine", text: "Does the machine bother you?" },
+  { name: "are a machine", text: "Does the machine bother you?" },
+  { name: "mri", text: "MRI means Magnetic Resonance Imaging." },
+  { name: "what is mri", text: "MRI means Magnetic Resonance Imaging."},
+
+  { name: "what is mri", text: "MRI means Magnetic Resonance Imaging." },
+
+  { name: "rnp", text: "RNP means Ribo-nucleo Protein." },
+
+  { name: "what is rnp", text: "RNP means Ribo-nucleo Protein." },
+
+  { name: "oncogene", text: "An oncogene is a gene that causes cancer." },
+
+  { name: "what is oncogene", text: "An oncogene is a gene that causes cancer." },
+
+  { name: "bcd", text: "BCD means Binary Coded Decimal." },
+
+  { name: "what is bcd", text: "BCD means Binary Coded Decimal." },
+
+  { name: "cell theory", text: "Cell Theory was given by Mathias Jacob Scheleiden, Theodor Schwann, and Rudolf Virchow." },
+
+  { name: "by whom cell theory was given", text: "Cell Theory was given by Mathias Jacob Scheleiden, Theodor Schwann, and Rudolf Virchow." },
+
+  { name: "what cell", text: "The term 'cell' comes from the Latin word 'cellula'." },
+
+  { name: "what is cell", text: "The term 'cell' comes from the Latin word 'cellula'." },
+
+  { name: "stop codon", text: "The stop codons are UAA, UGA, and UAG." },
+
+  { name: "termination codon", text: "The stop codons are UAA, UGA, and UAG." },
+
+  { name: "first codon", text: "The start codon or first codon is AUG." },
+
+  { name: "start codon", text: "The start codon or first codon is AUG." },
+ { name: "language of life", text: "The language of life is protein." },
+
+  { name: "what is called language of life", text: "The language of life is protein." },
+
+  { name: "protein", text: "Protein is called the Language of Life." },
+
+  { name: "what is protein", text: "Protein is called the Language of Life." },
+
+  { name: "robert hooke", text: "Robert Hooke's book is 'Micrographia,' in which he enlisted his legendary cell theory." },
+
+  { name: "robert hooks book", text: "Robert Hooke's book is 'Micrographia,' in which he enlisted his legendary cell theory." },
+
+  { name: "dna", text: "DNA stands for Deoxy-ribo Nucleic Acid." },
+
+  { name: "what is dna", text: "DNA stands for Deoxy-ribo Nucleic Acid." },
+
+  { name: "rna", text: "RNA stands for Ribo Nucleic Acid." },
+
+  { name: "what is rna", text: "RNA stands for Ribo Nucleic Acid." },
+
+  { name: "types of rna", text: "The types of RNA include rRNA, mRNA, tRNA, and genetic RNA." },
+
+  { name: "rna type", text: "The types of RNA include rRNA, mRNA, tRNA, and genetic RNA." },
+
+  { name: "pagol", text: "Cell division was invented by Walter Flemming." },
+
+  { name: "by whom cell division was invented", text: "Cell division was invented by Walter Flemming." },
+
+  { name: "how are you", text: "I'm doing well, thank you!" },
+
+  { name: "help", text: "How can I assist you?" },
+
+  { name: "name", text: "Names don't interest me! [Name]." },{ name: "age", text: "I am an AI chatbot, so I don't have an age. How old are you?" },
+
+  { name: "location", text: "I am an AI chatbot, so I don't have a physical location. Where are you from?" },
+
+  { name: "yes", text: "Are you sure?" },
+
+  { name: "positive", text: "Are you sure?" },
+
+  { name: "no", text: "Are you sure?" },
+
+  { name: "negative", text: "Are you sure?" },
+
+  { name: "humm", text: "Ok...Tell me more. I know nothing about that." },
+
+  { name: "absolutely", text: "Ok...Tell me more. I know nothing about that." },
+
+  { name: "ai", text: "Does it trouble you that I am an AI...?" },
+
+  { name: "calculator", text: "As an AI chatbot, I have no ability to calculate!" },
+
+  { name: "what is calculator", text: "As an AI chatbot, I have no ability to calculate!" },
+
+  { name: "why", text: "Do you believe that...?" },{ name: "phoenix", text: "According to mythology, Phoenix is a golden bird that..." },
+
+  { name: "phoenixe", text: "According to mythology, Phoenix is a golden bird that..." },
+  
+  { name: "sherlock holmes", text: "Sherlock Holmes is a famous fictional detective created by Sir Arthur Conan Doyle." },
+  { name: "novel", text: "Sherlock Holmes is a detective novel series written by Sir Arthur Conan Doyle." },
+  
+  { name: "harry potter", text: "Harry Potter is a popular fantasy book series written by J.K. Rowling." },
+  { name: "chloram-d", text: "Chloram-D is an ointment used for the treatment of eye infections." },
+  { name: "ointment", text: "An ointment is a semi-solid preparation used for applying medication to the skin or eyes." },
+  { name: "master", text: "My master is a skilled and knowledgeable person who guides me in my learning.And he is Mohammad Al-amin." },
+  { name: "allah", text: "Yes, I believe in Allah. Allah is the Islamic term for God." },
+ 
+  { name: "photosynthesis", text: "Photosynthesis is the process by which green plants and some other organisms convert light energy into chemical energy. They use carbon dioxide and water to produce glucose and oxygen, with the help of sunlight and chlorophyll." },
+  { name: "biodiversity", text: "Biodiversity refers to the variety and variability of life forms, including different species of plants, animals, microorganisms, and their ecosystems in a given region or on Earth as a whole." },
+  { name: "gravity", text: "Gravity is the force of attraction between objects with mass. It is responsible for the phenomenon of weight and keeps planets in orbit around the sun and objects grounded on the Earth's surface. The more massive an object, the stronger its gravitational pull." },
+  { name: "mitosis", text: "Mitosis is a type of cell division that results in the formation of two identical daughter cells, each having the same number of chromosomes as the parent cell. It is essential for growth, tissue repair, and asexual reproduction in organisms." },
+  { name: "mona lisa", text: "The famous artwork 'Mona Lisa' was painted by Leonardo da Vinci. It is one of the most recognized and iconic paintings in the world." },
+  { name: "water", text: "Water has the chemical symbol H2O, representing two hydrogen atoms and one oxygen atom. It is essential for life and exists in liquid, solid (ice), and gaseous (water vapor) states." },
+
+
+
+
+  
+  { name: "vaccine", text: "A vaccine is a biological product that stimulates the immune system to develop immunity to a specific disease. It often contains weakened or inactivated forms of the pathogen or its antigens to trigger an immune response without causing the disease." },
+  { name: "antibody", text: "An antibody is a Y-shaped protein produced by the immune system in response to the presence of antigens, such as bacteria or viruses. Antibodies help neutralize and eliminate foreign invaders from the body." },
+  { name: "biologics", text: "Biologics are medical products derived from living organisms or their components. They can include vaccines, blood products, gene therapies, and other advanced therapies that treat diseases at the cellular or molecular level." },
+  { name: "stem cells", text: "Stem cells are undifferentiated cells with the ability to develop into various specialized cell types. They play a crucial role in tissue repair, regeneration, and development in multicellular organisms." },
+  { name: "gene therapy", text: "Gene therapy is a biological approach that aims to treat or prevent diseases by modifying the genetic material of a patient's cells. It can involve introducing new genes, editing existing genes, or silencing specific genes." },
+  { name: "biopharmaceuticals", text: "Biopharmaceuticals, also known as biologics or biologic drugs, are pharmaceutical products manufactured using biotechnology processes. They include a wide range of products like vaccines, monoclonal antibodies, and recombinant proteins." },
+  { name: "probiotics", text: "Probiotics are live microorganisms that confer health benefits when consumed in adequate amounts. They are often referred to as 'good bacteria' and are known to promote a healthy balance of gut microbiota." },
+  { name: "enzyme", text: "An enzyme is a biological catalyst that accelerates chemical reactions in living organisms. Enzymes play a crucial role in various metabolic processes, aiding in digestion, energy production, and cellular functions." },
+  { name: "monoclonal antibodies", text: "Monoclonal antibodies are laboratory-produced molecules designed to mimic the body's immune system. They are used for targeted therapy to identify and attack specific cells, such as cancer cells, while minimizing damage to healthy cells." },
+  { name: "blood plasma", text: "Blood plasma is the liquid component of blood that remains after red blood cells, white blood cells, and platelets are removed. It contains proteins, electrolytes, hormones, and antibodies, and is used in various medical treatments and therapies." },
+
+
+
+  
+
+  // Additional questions and responses below:
+
+  { name: "transcription", text: "Transcription is the process by which an RNA molecule is synthesized from a DNA template. It involves the copying of a specific DNA sequence into an RNA molecule." },
+
+  { name: "what is transcription", text: "Transcription is the process by which an RNA molecule is synthesized from a DNA template. It involves the copying of a specific DNA sequence into an RNA molecule." },
+
+  { name: "cytoplasm", text: "Cytoplasm is the gel-like substance found inside the cell, surrounding the organelles. It contains various molecules and structures necessary for cellular processes." }, ];
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recorder = new SpeechRecognition();
+
+recorder.onstart = () => {
+
+  console.log('Voice recognition is active');
+
+  btn.innerHTML = "Voice recognition is active";
+
+};
+
+recorder.onend = () => {
+
+  btn.innerHTML = "Start voice";
+
+};
+
+function botVoice(message) {
+
+  const speech = new SpeechSynthesisUtterance();
+
+  speech.text = "I don't understand that, Could you please rephrase or ask another question ?";
+
+  
+
+  for (let botData of arr1) {
+
+    if (message.includes(botData.name.toLowerCase())) {
+
+      speech.text = botData.text;
+
+    }
+
+  }
+
+  
+
+  container.innerHTML += `<p class="speech">${speech.text}</p>`;
+
+  speech.volume = 1;
+
+  speech.rate = 1;
+
+  speech.pitch = 1;
+
+  window.speechSynthesis.speak(speech);
+
+  
+
+  scrollToBottom(); // Call the function to scroll to the bottom after adding the new message.
+
+}
+
+recorder.onresult = (event) => {
+
+  const current = event.resultIndex;
+
+  const transcript = event.results[current][0].transcript;
+
+  
+
+  container.innerHTML += `<p class="recorder">${transcript}</p>`;
+
+  botVoice(transcript.toLowerCase());
+
+};
+
+function startVoice() {
+
+  recorder.start();
+
+}
+
+form.onsubmit = (e) => {
+
+  e.preventDefault();
+
+  let formInput = document.getElementById('botvalue').value;
+
+  
+
+  if (formInput === '') {
+
+    return false;
+
+  } else {
+
+    container.innerHTML += `<p class="recorder">${formInput}</p>`;
+
+    botVoice(formInput.toLowerCase());
+
+    form.reset();
+
+    scrollToBottom(); // Call the function to scroll to the bottom after adding the new message.
+
+    return true;
+
+  }
+
+};
+
+function scrollToBottom() {
+
+  container.scrollTop = container.scrollHeight;
+
+}
+
+// Recall function: Delete the last user message from the chat container
+
+function recallLastMessage() {
+
+  const userMessages = container.querySelectorAll('.recorder');
+
+  if (userMessages.length > 0) {
+
+    userMessages[userMessages.length - 1].remove();
+
+  }
+
+}
+
+// Attach event listener to the recall 
+  
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to send a greeting message from the bot when the page loads
+  function sendGreetingMessage() {
+    const greeting = "Hello! I'm a ChatBot. How can I assist you today?";
+    container.innerHTML += `<p class="speech">${greeting}</p>`;
+    botVoice(greeting.toLowerCase());
+    scrollToBottom(); // Scroll to the bottom to display the greeting message.
+  }
+
+  // Send the greeting message when the page loads
+  sendGreetingMessage();
+});
+
+
+
+  
+</script>
+<style>*{
+
+ margin:0;
+
+ padding:0;
+
+ box-sizing:border-box;
+
+}
+
+body{
+
+ width:100%;
+
+ min-height:100vh;
+
+}
+
+.main-container{
+
+ margin:0 auto;
+
+ width:100%;
+
+ height:100%;
+
+ max-width:95%px;
+
+ padding:20px 0;
+
+}
+
+#chatbot-container{
+
+ width:95%;
+
+ height:350px;
+
+ margin:10px auto;
+
+ padding:10px 5px;
+
+ overflow-y:auto;
+
+ background:#f3f3f3;
+
+ display:flex;
+
+ display:-ms-flexbox;
+
+ display:inline-flex;
+
+ display:-webkit-flex;
+
+ flex-direction: column;
+
+ border-radius:10px;
+
+}
+
+.speech::first-letter,
+
+.recorder::first-letter{
+
+ text-transform: capitalize;
+
+}
+
+#chatbot-container .recorder{
+
+ color:#fff;
+
+ background:#78f;
+
+ border-radius:5px;
+
+ padding:8px;
+
+ margin:4px 0;
+
+ max-width:95%;
+
+ align-self:flex-start;
+
+ flex-shrink: 0;
+
+ 
+
+}
+
+#chatbot-container .speech{
+
+  color:#fff;
+
+ background:#1c8;
+
+ border-radius:5px;
+
+ padding:8px;
+
+ margin:4px 0;
+
+flex-shrink: 0;
+
+  align-self:flex-end;
+
+ max-width:250px;
+
+}
+button{
+
+  border:5px;
+
+ outline:5px;
+
+ background:none;
+
+}
+
+
+.fa-telegram-plane{
+
+ font-size:36px;
+
+ width:15%;
+
+ padding:8px 12px;
+
+ line-height: 30px;
+
+ cursor: pointer;
+
+ display:inline-block;
+
+}
+
+.fa-telegram-plane:hover{
+
+ color:#78f;
+
+}
+
+#btn{
+
+ background:#78f;
+
+ color:whiteSmoke;
+
+ padding:10px 25px;
+
+ font-size:22px;
+
+ font-weight:600;
+
+ display:block;
+
+ box-shadow:0 3px 10px #a7f;
+
+ margin:0 auto ;
+
+  transition:0.5s;
+
+}
+
+#btn:hover{
+
+ padding-right: 30px;
+
+ background:#6a7;
+
+ transition:0.5s;
+
+}
+
+#form{
+
+ width:100%;
+
+ text-align: center;
+
+ margin-bottom: 8px;
+
+}
+
+#form #botvalue{
+
+ padding:8px 10px;
+
+ border-radius:6px;
+
+ outline:none;
+
+ width:calc(100% - 18%);
+
+ line-height: 30px;
+
+ border:1px solid #555;
+
+ font-size:17px;
+
+ font-weight:normal;
+
+}
+.share-button{
+  border: none;
+  color: green;
+}
+.share-button:after {
+  position: absolute;
+  content: "share";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #ef9,
+   -4px -4px 5px 0px #fe9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.share-button:hover {
+  color: #ae3;
+}
+.share-button:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.share-button:active {
+  top: 2px;
+}</style>
+
+
+
+<head>
+
+    <style>
+
+        #share-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-top: 20px;
+
+        }
+
+        .share-button {
+
+            display: inline-block;
+
+            padding: 10px 20px;
+
+            margin: 5px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s, color 0.3s;
+
+        }
+
+        .share-button:hover {
+
+            background-color: #333;
+
+            color: #fff;
+
+        }
+
+        .share-button.facebook {
+
+            background-color: #1877F2;
+
+            color: #fff;
+
+        }
+
+        .share-button.twitter {
+
+            background-color: #1DA1F2;
+
+            color: #fff;
+
+        }
+
+        .share-button.pinterest {
+
+            background-color: #E60023;
+
+            color: #fff;
+
+        }
+
+        .share-button.copy {
+
+            background-color: #333;
+
+            color: #fff;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    
+
+   <pre> <div id="share-buttons">
+
+        <button class="share-button facebook" onclick="shareToFacebook()">Share on Facebook</button>
+
+        <button class="share-button twitter" onclick="shareToTwitter()">Share on Twitter</button>
+
+        <button class="share-button pinterest" onclick="shareToPinterest()">Share on Pinterest</button>
+
+        <button class="share-button copy" onclick="copyURL()">Copy URL</button>
+
+    </div>
+    </pre>
+
+    <!-- Your script here -->
+
+</body>
+
+</html>
+
+
+<script>
+function shareToFacebook() {
+    var url = encodeURIComponent(window.location.href);
+    window.open("https://www.facebook.com/sharer.php?u=" + url, "_blank");
+}
+
+function shareToTwitter() {
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent(document.title);
+    window.open("https://twitter.com/intent/tweet?url=" + url + "&text=" + title, "_blank");
+}
+
+function shareToPinterest() {
+    var url = encodeURIComponent(window.location.href);
+    var image = encodeURIComponent("IMAGE_URL"); // Replace with the URL of the image you want to share
+    window.open("https://www.pinterest.com/pin/create/button/?url=" + url + "&media=" + image, "_blank");
+}
+
+function copyURL() {
+    var tempInput = document.createElement("input");
+    tempInput.value = window.location.href;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("URL copied to clipboard!");
+}
+</script>
